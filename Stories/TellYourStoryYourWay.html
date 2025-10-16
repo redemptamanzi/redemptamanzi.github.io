@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>It'sMyStory</title>
+<style>
+  body {
+    font-family: "Georgia", serif;
+    margin: 0;
+    padding: 0;
+    background: #f5f5f5;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  /* Navbar */
+  header {
+    background: linear-gradient(90deg, #000, #555, #999, #ccc, #fff);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 2em;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  header h1 {
+    flex: 1;
+    text-align: center;
+    font-size: 1.8em;
+    color: white;
+    margin: 0;
+  }
+
+  .nav-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+    padding: 0.5em 1em;
+    transition: background 0.3s ease;
+  }
+
+  .nav-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  /* Layout */
+  main {
+    display: flex;
+    flex: 1;
+    padding: 1em;
+    gap: 1em;
+  }
+
+  /* Sidebar for stories */
+  .sidebar {
+    width: 25%;
+    background: #e0e0e0;
+    border-radius: 8px;
+    padding: 1em;
+    overflow-y: auto;
+  }
+
+  .story {
+    margin-bottom: 1em;
+  }
+
+  .story-title {
+    font-weight: bold;
+    cursor: pointer;
+    background: #ccc;
+    padding: 0.5em;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+  }
+
+  .story-title:hover {
+    background: #bbb;
+  }
+
+  .story-parts {
+    display: none;
+    margin-top: 0.5em;
+    padding-left: 1em;
+  }
+
+  .story-parts div {
+    cursor: pointer;
+    padding: 0.3em;
+    border-radius: 4px;
+    transition: background 0.3s;
+  }
+
+  .story-parts div:hover {
+    background: #ddd;
+  }
+
+  /* Story content area */
+  .content {
+    flex: 1;
+    background: white;
+    border-radius: 10px;
+    padding: 2em;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    overflow-y: auto;
+  }
+
+  /* Contact section */
+  footer {
+    background: #111;
+    color: white;
+    padding: 2em;
+    text-align: center;
+  }
+
+  footer h3 {
+    margin-top: 0;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
+    gap: 0.5em;
+  }
+
+  input, textarea {
+    padding: 0.7em;
+    border: none;
+    border-radius: 5px;
+  }
+
+  button {
+    padding: 0.7em;
+    border: none;
+    border-radius: 5px;
+    background: #555;
+    color: white;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: #777;
+  }
+
+  @media (max-width: 768px) {
+    main {
+      flex-direction: column;
+    }
+    .sidebar {
+      width: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <button class="nav-button" onclick="goHome()">Home</button>
+  <h1>It'sMyStory</h1>
+  <button class="nav-button" onclick="scrollToContact()">Contact</button>
+</header>
+
+<main>
+  <aside class="sidebar">
+    <div class="story">
+      <div class="story-title" onclick="toggleStoryParts('story1')">What's that?: Living with AD</div>
+      <div id="story1" class="story-parts">
+        <div onclick="showStoryPart('Part 1: What is wrong with me?', `
+            <p>When I was a baby, no one was allowed to hold me. My older sister and brother used to tell me that there were times when even they couldn’t carry me. Most of the time, I had to be held down because my skin was covered in red, sometimes bloody rashes. My mother was the only one who could carry me, clean me, and take care of me. At least back then, I didn’t understand what was happening. I was too young to comprehend it. My mom mentioned that things got worse when I was three months old.</p>
+            <p>The time I remember being sick was just before I started primary school. I used to have abscesses under my armpits and on my scalp. I recall going out to play with my arms resting on my wrists because holding them down typically hurt a lot. I didn’t want to squeeze the abscesses before they were ready to drain. I didn’t care that much, though; I could still play, as long as the sores weren’t on my legs. I also remember avoiding the sun most of the time because it made me feel dizzy and itchy.</p>
+            <p>As I entered adolescence, I began to care more about my appearance, just like any other girl. When I started high school, I went to a boarding school far from home. Before each semester, parents would give money to purchase essential supplies. For girls, skincare products were always at the top of the list. I used to buy them too, but I couldn’t really use them. Every time I applied them, painful rashes would flare up, especially when I was in the sun or sweating. I don’t remember exactly when I gave it up, but I know at some point, I had to stop.</p>
+            <p>When I was around 15, I still didn’t understand what was wrong with me. Some people claimed that I had been poisoned while my mother was pregnant with me. Others believed that someone had held me while they were on their period when I was a baby, which supposedly caused my condition to flare up every month, syncing with their menstrual cycle. They said the only chance for me to recover would be if that person died or went through menopause, after which there would be no more periods.</p>
+            <p>Before going to high school, my parents did their best to help me. They searched for a cure for their suffering child, but the problem was that the illness I had wasn’t common. As far as I can remember, I was never taken to a regular hospital; instead, I was treated by traditional healers. There was a disease known as ‘amahumane,’ which my parents and many others believed I had. People would say that most babies experience it. I don’t know much about the disease, but what I do know is that the treatments I received didn’t work for me--probably because I was no longer a baby.</p>
+            <p>I took so many different traditional medicines. Drinking strange herbal concoctions, applying plant extracts to my skin, chewing on bitter roots, you name it. Nothing worked. People who saw my condition often recommended new herbs to try, or introduced my parents to a different traditional healer who they claimed could help. And so, the journey went on. </p>
+            <p>There is one person I can never forget: Safari. Safari was my friend, but way older than me. I think she was like 25 when I was like 9. I used to go and hang out with her most of the time after school. Safari loved to knit, and I loved watching her. I would keep her company. She promised to knit a bag for my schoolbooks and teach me how to make one myself, and she did. Safari loved me. She cared for me and looked after me at times. </p>
+            <p>Safari used to look at my skin when I visited her while she was knitting. I often scratched myself a lot. One day, she told my parents that she would take me to a traditional healer who was well-known for treating different kinds of illnesses. My parents also took advice from many people, so they agreed. Safari took me there multiple times; I don’t remember how often, but I recall being given many herbal drinks and having different plants rubbed on my skin. Some of these treatments were quite painful –that much I remember. What I don’t recall is when we stopped going. Perhaps the healer simply gave up, too.</p>
+            <p>While all this was happening, I was also dealing with serious teeth problem.  I used to have some things coming out of them, so they needed to be removed. The experience was excruciating, something I will never forget. I recall being held down by one of my parents and a man from a nearby clinic while they pulled two teeth out of my mouth. There was no anesthesia used, so I felt everything. Although this may seem irrelevant to the story, I mention it because the combination of my dental issues and everything happening with my skin affected my relationship with my parents.</p>
+            <p>Around the same time, my younger sister became sick. She had problems with her eyes. While I was taken to a local clinic and treated with traditional medicine, my sister was taken across the country to see different doctors and specialists. This really hurt me. It’s funny to say it out loud now, but I was jealous. I felt like I didn’t matter as much. I was dealing with a painful skin disease and getting my teeth pulled without proper pain relief, while my sister was being moved from place to place for better care. I thought my parents hated me. At times, I wondered if I was even their child.</p>
+            <p> <b><i>To be continued in part 2... </i></b></p>
+            `)">Part 1: What is wrong with me?</div>
+        <div onclick="showStoryPart('Part 2: I want this to go away', `Coming soon...`)">Part 2: I want this to go away </div>
+        <div onclick="showStoryPart('Part 3: You can not see me!', `Coming soon...`)">Part 3: You can not see me!</div>
+        <div onclick="showStoryPart('Part 4: It can nott be true', `Coming soon...`)">Part 4: It can nott be true</div>
+        <div onclick="showStoryPart('Part 5: It gets better', `Coming soon...`)">Part 5: It gets better</div>
+      </div>
+    </div>
+
+    <!-- <div class="story">
+      <div class="story-title" onclick="toggleStoryParts('story2')">The Ember’s Heart</div>
+      <div id="story2" class="story-parts">
+        <div onclick="showStoryPart('Part 1', 'Deep in the forest, an ember refused to fade...')">Part 1</div>
+        <div onclick="showStoryPart('Part 2', 'Its warmth drew the creatures closer...')">Part 2</div>
+        <div onclick="showStoryPart('Part 3', 'And together, they learned the fire’s true song.')">Part 3</div>
+      </div>
+    </div> -->
+  </aside>
+
+  <section class="content" id="story-content">
+    <br>
+    <br>
+    <h2>Welcome to “It’s My Story”</h2>
+    <h3><i>Tell your story your way!</i></h3>
+    <br>
+    <br>
+    <br>
+    <br>
+    <p> We are happy you are here. Choose a story and have a good time!</p>
+  </section>
+</main>
+
+<!-- <footer id="contact">
+  <h3>Contact Me</h3>
+  <form onsubmit="sendEmail(event)">
+    <input type="text" id="name" placeholder="First Name" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <textarea id="message" rows="4" placeholder="Your message..." required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+  <p style="margin-top: 1em; font-size: 0.9em;">© 2025 It’s My Story</p>
+</footer> -->
+
+<footer id="contact">
+  <h3>Contact Me</h3>
+  <form action="https://formsubmit.co/your_email@example.com" method="POST">
+    <!-- Replace your_email@example.com with your actual email -->
+
+    <!-- Prevent spam -->
+    <input type="hidden" name="_captcha" value="false">
+    <!-- Optional: redirect to thank-you page -->
+    <input type="hidden" name="_next" value="https://yourwebsite.com/thankyou.html">
+
+    <input type="text" name="name" placeholder="First Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <textarea name="message" rows="4" placeholder="Your message..." required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+  <p style="margin-top: 1em; font-size: 0.9em;">© 2025 It’s My Story</p>
+</footer>
+
+<script>
+  // Reset to home content
+  function goHome() {
+    const content = document.getElementById('story-content');
+    content.innerHTML = `
+      <h2>Welcome to “It’s My Story”</h2>
+
+      <
+
+      <p>✨ Explore a collection of short stories filled with imagination, emotion, and meaning.  
+      Click on a story from the left panel to begin your reading journey.</p>
+    `;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Toggle parts
+  function toggleStoryParts(id) {
+    const parts = document.getElementById(id);
+    parts.style.display = parts.style.display === 'block' ? 'none' : 'block';
+  }
+
+  // Show story part
+  function showStoryPart(title, text) {
+    const content = document.getElementById('story-content');
+    content.innerHTML = `<h2>${title}</h2><p>${text}</p>`;
+  }
+
+  // Scroll to contact section
+  function scrollToContact() {
+    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // Mock email send
+  function sendEmail(e) {
+    e.preventDefault();
+    alert("Thank you! Your message has been sent.");
+    e.target.reset();
+  }
+</script>
+
+</body>
+</html>
