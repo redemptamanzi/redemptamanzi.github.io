@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Projects</title>
+
+  <style>
+
+    /* =========================
+       RESET
+    ========================== */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+
+    /* =========================
+       COLORS
+    ========================== */
+
+    :root {
+      --black: #111111;
+      --dark: #222222;
+      --gray: #666666;
+      --light-gray: #e8e8e8;
+      --off-white: #f7f7f7;
+      --white: #ffffff;
+    }
+
+
+    /* =========================
+       BASE
+    ========================== */
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+
+      background: var(--white);
+
+      color: var(--black);
+
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+
+      width: 100%;
+    }
+
+
+    /* =========================
+       HEADER
+    ========================== */
+
+    header {
+      width: 100%;
+
+      padding: 30px 5%;
+    }
+
+    .top-bar {
+      max-width: 1300px;
+
+      margin: 0 auto;
+
+      display: flex;
+
+      justify-content: flex-end;
+
+      align-items: center;
+    }
+
+    .back-link {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      font-size: 0.85rem;
+
+      font-weight: 600;
+
+      color: var(--gray);
+
+      transition: color 0.2s ease;
+    }
+
+    .back-link:hover {
+      color: var(--black);
+    }
+
+    .arrow {
+      transition: transform 0.2s ease;
+    }
+
+    .back-link:hover .arrow {
+      transform: translateX(-4px);
+    }
+
+
+    /* =========================
+       INTRO
+    ========================== */
+
+    .intro {
+      max-width: 1300px;
+
+      margin: 0 auto;
+
+      padding: 100px 5% 90px;
+    }
+
+    .intro-label {
+      display: block;
+
+      font-size: 0.8rem;
+
+      font-weight: 700;
+
+      text-transform: uppercase;
+
+      letter-spacing: 2px;
+
+      color: var(--gray);
+
+      margin-bottom: 20px;
+    }
+
+    .intro h1 {
+      max-width: 900px;
+
+      font-size: clamp(3.2rem, 8vw, 7.5rem);
+
+      line-height: 0.95;
+
+      letter-spacing: -5px;
+
+      font-weight: 700;
+    }
+
+    .intro p {
+      max-width: 580px;
+
+      margin-top: 35px;
+
+      color: var(--gray);
+
+      font-size: 1.05rem;
+    }
+
+
+    /* =========================
+       PROJECT SECTION
+    ========================== */
+
+    .projects {
+      background: var(--off-white);
+
+      padding: 90px 5%;
+    }
+
+    .projects-container {
+      max-width: 1300px;
+
+      margin: 0 auto;
+    }
+
+    .projects-heading {
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: flex-end;
+
+      margin-bottom: 45px;
+    }
+
+    .projects-heading h2 {
+      font-size: 2rem;
+
+      letter-spacing: -1px;
+    }
+
+    .projects-heading span {
+      font-size: 0.85rem;
+
+      color: var(--gray);
+    }
+
+
+    /* =========================
+       PROJECT GRID
+       
+       FLEXBOX IS USED HERE
+       SO INCOMPLETE ROWS
+       AUTOMATICALLY CENTER.
+    ========================== */
+
+    .project-grid {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      justify-content: center;
+
+      gap: 45px 20px;
+    }
+
+
+    /* =========================
+       PROJECT CARD
+    ========================== */
+
+    .project {
+      flex: 0 0 calc(25% - 15px);
+
+      max-width: calc(25% - 15px);
+
+      display: block;
+
+      cursor: pointer;
+    }
+
+
+    /* =========================
+       PROJECT IMAGE
+    ========================== */
+
+    .project-image {
+      position: relative;
+
+      width: 100%;
+
+      aspect-ratio: 4 / 3;
+
+      overflow: hidden;
+
+      background: var(--light-gray);
+    }
+
+    .project-image img {
+      width: 100%;
+
+      height: 100%;
+
+      object-fit: cover;
+
+      display: block;
+
+      filter: grayscale(100%);
+
+      transition:
+        transform 0.5s ease,
+        filter 0.5s ease;
+    }
+
+    .project:hover .project-image img {
+      transform: scale(1.04);
+
+      filter: grayscale(0%);
+    }
+
+
+    /* =========================
+       PROJECT OVERLAY
+    ========================== */
+
+    .project-overlay {
+      position: absolute;
+
+      inset: 0;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      background: rgba(0, 0, 0, 0);
+
+      transition:
+        background 0.3s ease;
+    }
+
+    .project-overlay span {
+      opacity: 0;
+
+      color: white;
+
+      border: 1px solid white;
+
+      padding: 9px 16px;
+
+      font-size: 0.7rem;
+
+      font-weight: 700;
+
+      text-transform: uppercase;
+
+      letter-spacing: 1px;
+
+      transform: translateY(10px);
+
+      transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+    }
+
+    .project:hover .project-overlay {
+      background: rgba(0, 0, 0, 0.25);
+    }
+
+    .project:hover .project-overlay span {
+      opacity: 1;
+
+      transform: translateY(0);
+    }
+
+
+    /* =========================
+       PROJECT INFORMATION
+    ========================== */
+
+    .project-info {
+      padding-top: 14px;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      gap: 10px;
+    }
+
+    .project-title {
+      font-size: 1rem;
+
+      font-weight: 700;
+
+      color: var(--black);
+    }
+
+    .project-description {
+      margin-top: 3px;
+
+      font-size: 0.78rem;
+
+      color: var(--gray);
+    }
+
+    .project-number {
+      font-size: 0.7rem;
+
+      color: var(--gray);
+
+      padding-top: 3px;
+    }
+
+
+    /* =========================
+       TRANSITION SECTION
+    ========================== */
+
+    .transition {
+      background: var(--black);
+
+      color: white;
+
+      padding: 140px 5%;
+    }
+
+    .transition-container {
+      max-width: 1300px;
+
+      margin: 0 auto;
+    }
+
+    .transition-label {
+      color: #999999;
+
+      text-transform: uppercase;
+
+      font-size: 0.8rem;
+
+      letter-spacing: 2px;
+    }
+
+    .transition h2 {
+      max-width: 850px;
+
+      margin-top: 25px;
+
+      font-size: clamp(2.8rem, 6vw, 6rem);
+
+      line-height: 1;
+
+      letter-spacing: -3px;
+    }
+
+    .transition-link {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 15px;
+
+      margin-top: 45px;
+
+      padding-bottom: 8px;
+
+      border-bottom: 1px solid white;
+
+      font-weight: 600;
+
+      transition: gap 0.2s ease;
+    }
+
+    .transition-link:hover {
+      gap: 25px;
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer {
+      background: var(--black);
+
+      color: #777777;
+
+      padding: 30px 5%;
+    }
+
+    .footer-inner {
+      max-width: 1300px;
+
+      margin: 0 auto;
+
+      padding-top: 25px;
+
+      border-top: 1px solid #333333;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      font-size: 0.8rem;
+    }
+
+
+    /* =========================
+       TABLET
+       
+       2 PROJECTS PER ROW
+    ========================== */
+
+    @media (max-width: 1000px) {
+
+      .project {
+        flex: 0 0 calc(50% - 12.5px);
+
+        max-width: calc(50% - 12.5px);
+      }
+
+    }
+
+
+    /* =========================
+       SMALL TABLET
+    ========================== */
+
+    @media (max-width: 800px) {
+
+      .intro {
+        padding-top: 70px;
+      }
+
+      .projects {
+        padding-top: 75px;
+
+        padding-bottom: 75px;
+      }
+
+      .transition {
+        padding: 100px 5%;
+      }
+
+    }
+
+
+    /* =========================
+       MOBILE
+       
+       1 PROJECT PER ROW
+    ========================== */
+
+    @media (max-width: 550px) {
+
+      header {
+        padding: 22px 6%;
+      }
+
+
+      .intro {
+        padding:
+          70px 6%
+          75px;
+      }
+
+
+      .intro h1 {
+        font-size: 3.3rem;
+
+        letter-spacing: -2.5px;
+      }
+
+
+      .intro p {
+        font-size: 0.95rem;
+      }
+
+
+      .projects {
+        padding-left: 6%;
+
+        padding-right: 6%;
+      }
+
+
+      .projects-heading {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 8px;
+      }
+
+
+      .project-grid {
+        gap: 45px;
+      }
+
+
+      .project {
+        flex: 0 0 100%;
+
+        max-width: 100%;
+      }
+
+
+      .project-info {
+        flex-direction: column;
+
+        gap: 5px;
+      }
+
+
+      .project-number {
+        order: -1;
+      }
+
+
+      .transition {
+        padding:
+          90px 6%;
+      }
+
+
+      .transition h2 {
+        font-size: 3rem;
+
+        letter-spacing: -2px;
+      }
+
+
+      .footer-inner {
+        flex-direction: column;
+
+        gap: 10px;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+
+  <header>
+
+    <div class="top-bar">
+
+      <!--
+        Change "#" to the URL/page
+        you want the Back button
+        to return to.
+      -->
+
+      <a
+        href="#"
+        class="back-link"
+      >
+
+        <span class="arrow">
+          ←
+        </span>
+
+        Back
+
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================
+       INTRO
+  ========================== -->
+
+  <section class="intro">
+
+    <span class="intro-label">
+      Selected Work
+    </span>
+
+    <h1>
+      Some rojects.
+    </h1>
+
+    <p>
+      Here is what I have been up to...
+      <!-- Explore the work below to learn more about each one. -->
+    </p>
+
+  </section>
+
+
+  <!-- =========================
+       PROJECTS
+    ========================== -->
+
+  <section class="projects">
+
+    <div class="projects-container">
+
+
+      <!-- PROJECT HEADER -->
+
+      <div class="projects-heading">
+
+        <h2>
+          Projects
+        </h2>
+
+        <!-- <span>
+          01 — 06
+        </span> -->
+        <span>
+          01 — 02
+        </span>
+
+      </div>
+
+
+      <!-- PROJECT GRID -->
+
+      <div class="project-grid">
+
+
+        <!-- =====================
+             PROJECT 01
+        ====================== -->
+
+        <a
+          href="cleaning.html"
+          class="project"
+        >
+
+          <div class="project-image">
+
+            <img
+              src="https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1500w,f_auto,q_auto:best/newscms/2017_41/2187641/171012-better-stock-house-cleaner-ew-531p.jpg"
+              alt="Project One"
+            >
+
+            <div class="project-overlay">
+
+              <span>
+                View Project
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="project-info">
+
+            <div>
+
+              <div class="project-title">
+                Cleaning Services
+              </div>
+
+              <div class="project-description">
+                Web Design / Development
+              </div>
+
+            </div>
+
+            <div class="project-number">
+              01
+            </div>
+
+          </div>
+
+        </a>
+
+
+        <!-- =====================
+             PROJECT 02
+        ====================== -->
+
+        <a
+          href="#"
+          class="project"
+        >
+
+          <div class="project-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1200&q=80"
+              alt="Project Two"
+            >
+
+            <div class="project-overlay">
+
+              <span>
+                View Project
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="project-info">
+
+            <div>
+
+              <div class="project-title">
+                Project Two
+              </div>
+
+              <div class="project-description">
+                Branding / Digital
+              </div>
+
+            </div>
+
+            <div class="project-number">
+              02
+            </div>
+
+          </div>
+
+        </a>
+
+
+        <!-- =====================
+             PROJECT 03
+        ====================== -->
+<!-- 
+        <a
+          href="#"
+          class="project"
+        >
+
+          <div class="project-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=80"
+              alt="Project Three"
+            >
+
+            <div class="project-overlay">
+
+              <span>
+                View Project
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="project-info">
+
+            <div>
+
+              <div class="project-title">
+                Project Three
+              </div>
+
+              <div class="project-description">
+                Creative Direction
+              </div>
+
+            </div>
+
+            <div class="project-number">
+              03
+            </div>
+
+          </div>
+
+        </a>
+ -->
+
+        <!-- =====================
+             PROJECT 04
+        ====================== -->
+<!-- 
+        <a
+          href="#"
+          class="project"
+        >
+
+          <div class="project-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80"
+              alt="Project Four"
+            >
+
+            <div class="project-overlay">
+
+              <span>
+                View Project
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="project-info">
+
+            <div>
+
+              <div class="project-title">
+                Project Four
+              </div>
+
+              <div class="project-description">
+                Strategy / Design
+              </div>
+
+            </div>
+
+            <div class="project-number">
+              04
+            </div>
+
+          </div>
+
+        </a>
+ -->
+
+        <!-- =====================
+             PROJECT 05
+        ====================== -->
+<!-- 
+        <a
+          href="#"
+          class="project"
+        >
+
+          <div class="project-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=80"
+              alt="Project Five"
+            >
+
+            <div class="project-overlay">
+
+              <span>
+                View Project
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="project-info">
+
+            <div>
+
+              <div class="project-title">
+                Project Five
+              </div>
+
+              <div class="project-description">
+                Product / Experience
+              </div>
+
+            </div>
+
+            <div class="project-number">
+              05
+            </div>
+
+          </div>
+
+        </a> -->
+
+
+        <!-- =====================
+             PROJECT 06
+        ====================== -->
+<!-- 
+        <a
+          href="#"
+          class="project"
+        >
+
+          <div class="project-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80"
+              alt="Project Six"
+            >
+
+            <div class="project-overlay">
+
+              <span>
+                View Project
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="project-info">
+
+            <div>
+
+              <div class="project-title">
+                Project Six
+              </div>
+
+              <div class="project-description">
+                Research / Development
+              </div>
+
+            </div>
+
+            <div class="project-number">
+              06
+            </div>
+
+          </div>
+
+        </a> -->
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       TRANSITION
+    ========================== -->
+
+  <section class="transition">
+
+    <div class="transition-container">
+
+      <span class="transition-label">
+        What's next?
+      </span>
+
+      <h2>
+        Continue...
+      </h2>
+
+      <a
+        href="#"
+        class="transition-link"
+      >
+
+        Continue
+
+        <span>
+          →
+        </span>
+
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FOOTER
+    ========================== -->
+
+  <footer>
+
+    <div class="footer-inner">
+
+      <span>
+        © 2026
+      </span>
+
+      <span>
+        All rights reserved.
+      </span>
+
+    </div>
+
+  </footer>
+
+
+</body>
+</html>

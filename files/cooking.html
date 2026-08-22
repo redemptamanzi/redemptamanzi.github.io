@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>RedEliz Kitchen | Homemade Meals</title>
+
+  <style>
+    /* =========================================
+       RESET
+    ========================================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* =========================================
+       COLORS
+    ========================================= */
+
+    :root {
+      --brown: #5C3A21;
+      --brown-dark: #422816;
+      --brown-light: #7A5538;
+
+      --cream: #F8F3EC;
+      --cream-dark: #EEE5D8;
+
+      --white: #FFFFFF;
+      --black: #211A15;
+      --gray: #71685F;
+    }
+
+    /* =========================================
+       BASE
+    ========================================= */
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--cream);
+      color: var(--black);
+      line-height: 1.6;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    /* =========================================
+       NAVIGATION
+    ========================================= */
+
+    header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 10;
+      padding: 25px 5%;
+    }
+
+    .nav {
+      max-width: 1250px;
+      margin: 0 auto;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* =========================================
+       LOGO
+
+       Replace the image src with your logo.
+       Example:
+
+       <img src="logo.png" alt="RedEliz Kitchen">
+    ========================================= */
+
+    .logo {
+      width: 140px;
+      height: 70px;
+
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .logo img {
+      max-width: 100%;
+      max-height: 70px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .logo-placeholder {
+      color: var(--brown);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.1rem;
+      font-weight: bold;
+      line-height: 1.05;
+    }
+
+    /* =========================================
+       NAV LINKS
+    ========================================= */
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      color: var(--brown);
+      font-size: 0.85rem;
+      font-weight: 600;
+
+      transition: opacity 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.65;
+    }
+
+    .nav-button {
+      padding: 11px 20px;
+      border: 1px solid var(--brown);
+
+      transition:
+        background 0.2s ease,
+        color 0.2s ease;
+    }
+
+    .nav-button:hover {
+      background: var(--brown);
+      color: var(--white);
+      opacity: 1 !important;
+    }
+
+    /* =========================================
+       HERO
+    ========================================= */
+
+    .hero {
+      min-height: 760px;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      background: var(--cream);
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      padding:
+        130px
+        8%
+        90px
+        max(5vw, 8%);
+    }
+
+    .hero-label {
+      color: var(--brown);
+
+      font-size: 0.8rem;
+      font-weight: 700;
+
+      letter-spacing: 2px;
+      text-transform: uppercase;
+
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      color: var(--brown);
+
+      font-family: Georgia, "Times New Roman", serif;
+
+      font-size: clamp(3.4rem, 6vw, 6.5rem);
+
+      line-height: 0.95;
+
+      letter-spacing: -3px;
+
+      max-width: 650px;
+    }
+
+    .hero h1 span {
+      font-style: italic;
+    }
+
+    .hero-text {
+      max-width: 500px;
+
+      margin-top: 30px;
+
+      color: var(--gray);
+
+      font-size: 1.05rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      align-items: center;
+
+      gap: 15px;
+
+      margin-top: 38px;
+    }
+
+    .button {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      padding: 14px 25px;
+
+      border: 1px solid var(--brown);
+
+      font-size: 0.85rem;
+      font-weight: 700;
+
+      transition:
+        background 0.2s ease,
+        color 0.2s ease;
+    }
+
+    .button-primary {
+      background: var(--brown);
+      color: var(--white);
+    }
+
+    .button-primary:hover {
+      background: var(--brown-dark);
+    }
+
+    .button-secondary {
+      color: var(--brown);
+    }
+
+    .button-secondary:hover {
+      background: var(--brown);
+      color: var(--white);
+    }
+
+    /* =========================================
+       HERO IMAGE
+
+       Replace this URL with your own image
+       if you want.
+    ========================================= */
+
+    .hero-image {
+      min-height: 760px;
+
+      background:
+        linear-gradient(
+          rgba(92, 58, 33, 0.08),
+          rgba(92, 58, 33, 0.08)
+        ),
+        url("https://www.hunts.com/sites/g/files/qyyrlu211/files/uploadedImages/img_9901_96176.jpg");
+
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* =========================================
+       INTRO
+    ========================================= */
+
+    .intro {
+      padding: 120px 5%;
+
+      background: var(--white);
+
+      text-align: center;
+    }
+
+    .section-label {
+      color: var(--brown);
+
+      font-size: 0.75rem;
+      font-weight: 700;
+
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .intro h2 {
+      max-width: 800px;
+
+      margin: 20px auto 0;
+
+      font-family: Georgia, "Times New Roman", serif;
+
+      color: var(--brown);
+
+      font-size: clamp(2.4rem, 5vw, 4.5rem);
+
+      line-height: 1.05;
+
+      letter-spacing: -2px;
+    }
+
+    .intro p {
+      max-width: 650px;
+
+      margin: 25px auto 0;
+
+      color: var(--gray);
+
+      font-size: 1rem;
+    }
+
+    /* =========================================
+       SERVICES
+    ========================================= */
+
+    .services {
+      padding: 110px 5%;
+
+      background: var(--cream);
+    }
+
+    .section-header {
+      max-width: 1250px;
+
+      margin: 0 auto 55px;
+    }
+
+    .section-header h2 {
+      margin-top: 15px;
+
+      color: var(--brown);
+
+      font-family: Georgia, "Times New Roman", serif;
+
+      font-size: clamp(2.5rem, 5vw, 4rem);
+
+      line-height: 1;
+    }
+
+    .service-grid {
+      max-width: 1250px;
+
+      margin: 0 auto;
+
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 25px;
+    }
+
+    .service {
+      background: var(--white);
+
+      padding: 40px 32px;
+
+      border: 1px solid var(--cream-dark);
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .service:hover {
+      transform: translateY(-4px);
+
+      box-shadow:
+        0 12px 30px rgba(92, 58, 33, 0.08);
+    }
+
+    .service-number {
+      color: var(--brown-light);
+
+      font-size: 0.75rem;
+
+      font-weight: 700;
+
+      letter-spacing: 1px;
+    }
+
+    .service h3 {
+      margin-top: 30px;
+
+      color: var(--brown);
+
+      font-family: Georgia, serif;
+
+      font-size: 1.7rem;
+    }
+
+    .service p {
+      margin-top: 15px;
+
+      color: var(--gray);
+
+      font-size: 0.9rem;
+    }
+
+    /* =========================================
+       FEATURED FOOD
+    ========================================= */
+
+    .food {
+      padding: 120px 5%;
+
+      background: var(--white);
+    }
+
+    .food-container {
+      max-width: 1250px;
+
+      margin: 0 auto;
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 70px;
+
+      align-items: center;
+    }
+
+    .food-image {
+      aspect-ratio: 1 / 1;
+
+      overflow: hidden;
+    }
+
+    .food-image img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+    }
+
+    .food-content h2 {
+      color: var(--brown);
+
+      font-family: Georgia, serif;
+
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+
+      line-height: 1;
+
+      letter-spacing: -2px;
+
+      margin-top: 18px;
+    }
+
+    .food-content p {
+      max-width: 500px;
+
+      margin-top: 25px;
+
+      color: var(--gray);
+    }
+
+    .food-list {
+      margin-top: 30px;
+
+      list-style: none;
+    }
+
+    .food-list li {
+      padding: 12px 0;
+
+      border-bottom: 1px solid var(--cream-dark);
+
+      color: var(--brown);
+
+      font-size: 0.9rem;
+
+      font-weight: 600;
+    }
+
+    .food-list li::before {
+      content: "—";
+
+      margin-right: 12px;
+
+      color: var(--brown-light);
+    }
+
+    /* =========================================
+       GALLERY
+    ========================================= */
+
+    .gallery {
+      padding: 110px 5%;
+
+      background: var(--cream);
+    }
+
+    .gallery-grid {
+      max-width: 1250px;
+
+      margin: 0 auto;
+
+      display: grid;
+
+      grid-template-columns: repeat(4, 1fr);
+
+      gap: 15px;
+    }
+
+    .gallery-item {
+      aspect-ratio: 1 / 1;
+
+      overflow: hidden;
+
+      background: var(--cream-dark);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    /* =========================================
+       CALL TO ACTION
+    ========================================= */
+
+    .cta {
+      background: var(--brown);
+
+      color: var(--white);
+
+      padding: 120px 5%;
+
+      text-align: center;
+    }
+
+    .cta .section-label {
+      color: #E9DDD0;
+    }
+
+    .cta h2 {
+      max-width: 850px;
+
+      margin: 20px auto 0;
+
+      font-family: Georgia, serif;
+
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+
+      line-height: 1;
+
+      letter-spacing: -3px;
+    }
+
+    .cta p {
+      max-width: 550px;
+
+      margin: 25px auto 0;
+
+      color: #E9DDD0;
+    }
+
+    .cta-button {
+      display: inline-block;
+
+      margin-top: 35px;
+
+      padding: 15px 28px;
+
+      background: var(--white);
+
+      color: var(--brown);
+
+      font-size: 0.85rem;
+
+      font-weight: 700;
+
+      transition:
+        background 0.2s ease,
+        color 0.2s ease;
+    }
+
+    .cta-button:hover {
+      background: var(--cream);
+
+      color: var(--brown-dark);
+    }
+
+    /* =========================================
+       FOOTER
+    ========================================= */
+
+    footer {
+      background: var(--brown-dark);
+
+      color: #CBB9A7;
+
+      padding: 55px 5%;
+    }
+
+    .footer-container {
+      max-width: 1250px;
+
+      margin: 0 auto;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      gap: 40px;
+    }
+
+    .footer-name {
+      color: var(--white);
+
+      font-family: Georgia, serif;
+
+      font-size: 1.4rem;
+    }
+
+    .footer-container p {
+      margin-top: 8px;
+
+      font-size: 0.8rem;
+    }
+
+    .footer-links {
+      display: flex;
+
+      gap: 25px;
+
+      align-items: center;
+    }
+
+    .footer-links a {
+      font-size: 0.8rem;
+
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--white);
+    }
+
+    /* =========================================
+       TABLET
+    ========================================= */
+
+    @media (max-width: 900px) {
+
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-content {
+        padding:
+          150px 8%
+          80px;
+      }
+
+      .hero-image {
+        min-height: 550px;
+      }
+
+      .service-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .food-container {
+        grid-template-columns: 1fr;
+
+        gap: 50px;
+      }
+
+      .food-image {
+        max-width: 700px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* =========================================
+       MOBILE
+    ========================================= */
+
+    @media (max-width: 600px) {
+
+      header {
+        padding: 18px 6%;
+      }
+
+      .nav-links a:not(.nav-button) {
+        display: none;
+      }
+
+      .nav-links {
+        gap: 10px;
+      }
+
+      .nav-button {
+        padding: 9px 14px;
+      }
+
+      .logo {
+        width: 105px;
+        height: 55px;
+      }
+
+      .logo img {
+        max-height: 55px;
+      }
+
+      .hero-content {
+        padding:
+          130px 7%
+          70px;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+
+        letter-spacing: -2px;
+      }
+
+      .hero-text {
+        font-size: 0.95rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+
+        align-items: stretch;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .hero-image {
+        min-height: 420px;
+      }
+
+      .intro,
+      .services,
+      .food,
+      .gallery {
+        padding-top: 80px;
+        padding-bottom: 80px;
+      }
+
+      .intro h2 {
+        font-size: 2.5rem;
+      }
+
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+
+        gap: 8px;
+      }
+
+      .cta {
+        padding: 90px 7%;
+      }
+
+      .cta h2 {
+        font-size: 3rem;
+
+        letter-spacing: -2px;
+      }
+
+      .footer-container {
+        flex-direction: column;
+      }
+
+      .footer-links {
+        flex-wrap: wrap;
+      }
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- =========================================
+       NAVIGATION
+  ========================================= -->
+
+  <header>
+
+    <nav class="nav">
+
+
+      <!--
+        ==============================
+        YOUR LOGO
+        ==============================
+
+        Replace the placeholder below with:
+
+        <img
+          src="logo.png"
+          alt="RedEliz Kitchen"
+        >
+
+        If your logo is in an images folder:
+
+        <img
+          src="images/logo.png"
+          alt="RedEliz Kitchen"
+        >
+      -->
+
+      <a href="#" class="logo">
+
+        <div class="logo-placeholder">
+          RedEliz<br>
+          Kitchen
+        </div>
+
+      </a>
+
+      <!-- <a href="#" class="logo">
+        <img
+            src="../images/redeliz_kitchen_logo.png"
+            alt="RedEliz Kitchen"
+        >
+    </a> -->
+
+      <div class="nav-links">
+
+        <a href="#about">
+          About
+        </a>
+
+        <a href="#services">
+          Services
+        </a>
+
+        <a href="#gallery">
+          Gallery
+        </a>
+
+        <a
+          href="#contact"
+          class="nav-button"
+        >
+          Contact
+        </a>
+
+      </div>
+
+    </nav>
+
+  </header>
+
+
+
+  <!-- =========================================
+       HERO
+  ========================================= -->
+
+  <section class="hero">
+
+
+    <div class="hero-content">
+
+      <span class="hero-label">
+        RedEliz Kitchen
+      </span>
+
+      <h1>
+        Authentic African <span>Cuisine.</span>
+      </h1>
+
+      <p class="hero-text">
+        Homemade meals prepared with care,
+        fresh ingredients, and a passion for
+        bringing good food to your table.
+      </p>
+
+
+      <div class="hero-buttons">
+
+        <a
+          href="#contact"
+          class="button button-primary"
+        >
+          Get in Touch
+        </a>
+
+        <a
+          href="#services"
+          class="button button-secondary"
+        >
+          Explore Our Services
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!--
+      Replace this image URL with your
+      preferred hero image if needed.
+    -->
+
+    <div class="hero-image"></div>
+
+
+  </section>
+
+
+
+  <!-- =========================================
+       ABOUT
+  ========================================= -->
+
+  <section
+    class="intro"
+    id="about"
+  >
+
+    <span class="section-label">
+      Welcome
+    </span>
+
+    <h2>
+       Let us make a meel for you.
+    </h2>
+
+    <p>
+      You got a specual occassion? RedEliz Kitchen got your back. Let us know what you need! 
+    </p>
+
+  </section>
+
+
+
+  <!-- =========================================
+       SERVICES
+  ========================================= -->
+
+  <section
+    class="services"
+    id="services"
+  >
+
+    <div class="section-header">
+
+      <span class="section-label">
+        What We Do
+      </span>
+
+      <h2>
+        Our Kitchen, Your Table.
+      </h2>
+
+    </div>
+
+
+    <div class="service-grid">
+
+
+      <!-- SERVICE 01 -->
+
+      <div class="service">
+
+        <span class="service-number">
+          01
+        </span>
+
+        <h3>
+          Homemade Meals
+        </h3>
+
+        <p>
+          Delicious home-style meals prepared
+          with fresh ingredients and plenty of
+          care. Perfect for busy families and
+          anyone who wants a homemade meal
+          without the work.
+        </p>
+
+      </div>
+
+
+      <!-- SERVICE 02 -->
+
+      <div class="service">
+
+        <span class="service-number">
+          02
+        </span>
+
+        <h3>
+          Catering
+        </h3>
+
+        <p>
+          Let us take care of the food for your
+          next gathering. We prepare thoughtful
+          menus for celebrations, meetings,
+          parties, and special occasions.
+        </p>
+
+      </div>
+
+
+      <!-- SERVICE 03 -->
+
+      <div class="service">
+
+        <span class="service-number">
+          03
+        </span>
+
+        <h3>
+          Special Orders
+        </h3>
+
+        <p>
+          Have something specific in mind?
+          Tell us what you're looking for and
+          we'll work with you to create a meal
+          that fits your occasion.
+        </p>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================================
+       FEATURED FOOD
+  ========================================= -->
+
+  <section class="food">
+
+    <div class="food-container">
+
+
+      <div class="food-image">
+
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbGDdPad1J9Vx34iY3lEAOvAc0x3Vgd7uepGw-ypBh7A&s=10"
+          alt="Fresh homemade food"
+        >
+
+      </div>
+
+
+      <div class="food-content">
+
+        <span class="section-label">
+          Made From Scratch
+        </span>
+
+        <h2>
+          Simple ingredients!
+        </h2>
+
+        <p>
+          We ease your day with a fresh delicious meanl. 
+        </p>
+
+
+        <ul class="food-list">
+
+          <li>
+            Fresh ingredients
+          </li>
+
+          <li>
+            Homemade preparation
+          </li>
+
+          <li>
+            Thoughtful portions
+          </li>
+
+          <li>
+            Meals made with care
+          </li>
+
+        </ul>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================================
+       GALLERY
+  ========================================= -->
+
+  <section
+    class="gallery"
+    id="gallery"
+  >
+
+    <div class="section-header">
+
+      <span class="section-label">
+        From Our Kitchen
+      </span>
+
+      <h2>
+        A taste of what we make.
+      </h2>
+
+    </div>
+
+
+    <div class="gallery-grid">
+
+
+      <div class="gallery-item">
+
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVBIcDtgia9HoFaFXnd5NYikacy2CZBWW9eqy8-RlCstry53kjhvfvl8g&s=10"
+          alt="Homemade meal"
+        >
+
+      </div>
+
+
+      <div class="gallery-item">
+
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRw6WFGSNT5EnMulJuVKM9nsjb9BLGj9cJRZKolGFOBoSPWK_r4TidqM10f&s=10"
+          alt="Fresh pasta"
+        >
+
+      </div>
+
+
+      <div class="gallery-item">
+
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoZ4AvC589dg-HZBXp7HQh_sI5xj6ctlWQ5YJga4UU-Q&s=10"
+          alt="Fresh food"
+        >
+
+      </div>
+
+
+      <div class="gallery-item">
+
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNZ5fRpzjINzPRekYMchZWdoANGekFHUJA1XHK9BrXIA&s=10"
+          alt="Fresh salad"
+        >
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================================
+       CONTACT / CTA
+  ========================================= -->
+
+  <section
+    class="cta"
+    id="contact"
+  >
+
+    <span class="section-label">
+      Let's Talk
+    </span>
+
+    <h2>
+      Have a meal in mind?
+    </h2>
+
+    <p>
+      Tell us what you're looking for and
+      let's create something delicious together.
+    </p>
+
+    <!--
+      Replace the email address below
+      with the actual business email.
+    -->
+
+    <a
+      href="mailto:hello@redelizkitchen.com"
+      class="cta-button"
+    >
+      Contact RedEliz Kitchen
+    </a>
+
+  </section>
+
+
+
+  <!-- =========================================
+       FOOTER
+  ========================================= -->
+
+  <footer>
+
+    <div class="footer-container">
+
+
+      <div>
+
+        <div class="footer-name">
+          RedEliz Kitchen
+        </div>
+
+        <p>
+          Homemade meals made with care.
+        </p>
+
+      </div>
+
+
+      <div class="footer-links">
+
+        <a href="#about">
+          About
+        </a>
+
+        <a href="#services">
+          Services
+        </a>
+
+        <a href="#gallery">
+          Gallery
+        </a>
+
+        <a href="#contact">
+          Contact
+        </a>
+
+      </div>
+
+
+    </div>
+
+  </footer>
+
+
+</body>
+</html>
