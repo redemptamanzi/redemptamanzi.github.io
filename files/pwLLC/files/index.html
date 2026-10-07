@@ -31,8 +31,11 @@
 
     :root {
       /* LIGHT BLUE + LIGHT YELLOW */
-      --primary: #4792de;
-      --primary-dark: #4f91aa;
+      --primary: #BF7C2A;
+      --primary-dark: #3B9ABF;
+
+      --secBlue: #3B9ABF 
+      --secBrown: #BF7C2A
 
       --secondary: #fff4c7;
       --accent: #e8c85a;
@@ -81,6 +84,8 @@
        HEADER
     ========================== */
 
+    /* Color for header, navbar */
+
     header {
       position: fixed;
       top: 0;
@@ -88,7 +93,8 @@
       width: 100%;
       z-index: 1000;
 
-      background: rgba(255, 255, 255, 0.96);
+      background: #3B9ABF;
+      /* background: white;  */
       backdrop-filter: blur(10px);
 
       border-bottom: 1px solid rgba(220, 235, 239, 0.8);
@@ -98,7 +104,7 @@
       max-width: 1180px;
       margin: auto;
 
-      height: 78px;
+      height: 90px;
       padding: 0 25px;
 
       display: flex;
@@ -116,9 +122,9 @@
     }
 
     .logo img {
-      height: 60px;
+      height: 90px;
       width: auto;
-      max-width: 200px;
+      max-width: 300px;
       object-fit: contain;
     }
 
@@ -133,14 +139,15 @@
     .nav-links a {
       color: var(--dark);
 
-      font-size: 0.9rem;
+      font-size: 0.99rem;
       font-weight: 600;
 
       transition: color 0.2s ease;
     }
 
     .nav-links a:hover {
-      color: var(--primary-dark);
+      /* color: var(--primary-dark); */
+      color: rgb(192, 196, 201);
     }
 
     .nav-quote {
@@ -174,21 +181,34 @@
        HERO
     ========================== */
 
+    /* We take pride in providing... section */
     .hero {
       min-height: 760px;
 
       padding: 145px 25px 80px;
 
-      background:
+      /* background:
         linear-gradient(
           90deg,
-          rgba(255,255,255,0.98) 0%,
-          rgba(255,255,255,0.90) 43%,
-          rgba(255,255,255,0.15) 100%
+          rgba(59, 154, 191, 0.99) 0%,
+          rgba(59, 154, 191, 0.99) 50%,
+          rgba(59, 154, 191, 0.25) 80%,
+          rgba(59, 154, 191, 0) 100%
         ),
 
         url("https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1500w,f_auto,q_auto:best/newscms/2017_41/2187641/171012-better-stock-house-cleaner-ew-531p.jpg")
-        center / cover no-repeat;
+        center / cover no-repeat; */
+
+        background:
+          linear-gradient(
+            90deg,
+            rgba(255,255,255,0.98) 0%,
+            rgba(255,255,255,0.90) 43%,
+            rgba(255,255,255,0.15) 100%
+          ),
+
+  url("https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1500w,f_auto,q_auto:best/newscms/2017_41/2187641/171012-better-stock-house-cleaner-ew-531p.jpg")
+  center / cover no-repeat;
 
       display: flex;
       align-items: center;
@@ -355,7 +375,8 @@
     ========================== */
 
     .services {
-      background: var(--background);
+      background: var(--primary-dark);
+      /* background: #BF7C2A; */
     }
 
     .service-grid {
@@ -502,7 +523,8 @@
     ========================== */
 
     .gallery {
-      background: var(--secondary);
+      background: var(--primary-dark);
+      /* background: #BF7C2A; */
     }
 
     .gallery-grid {
@@ -671,7 +693,8 @@
     ========================== */
 
     .quote-section {
-      background: var(--background);
+      /* background: var(--background); */
+      background: #3B9ABF;
     }
 
     .quote-wrapper {
@@ -1090,6 +1113,14 @@
       }
     }
 
+    /* .hero h1 {
+  color: #ffffff;
+    }    */
+
+    .hero h1 {
+  color: var(--dark);
+    }   
+
   </style>
 </head>
 
@@ -1123,7 +1154,7 @@
       <a href="#home" class="logo" aria-label="Home">
 
         <img
-          src="../images/logo.png"
+          src="../images/property_works_llc_logo.png"
           alt="pwLLC Logo"
         />
 
@@ -1200,9 +1231,9 @@
 
         <div class="hero-text">
 
-          <span class="eyebrow">
+          <!-- <span class="eyebrow">
             Professional Cleaning Services
-          </span>
+          </span> -->
 
           <h1>
             We take pride in providing
@@ -1252,9 +1283,9 @@
 
         <div class="section-heading center">
 
-          <span>
+          <!-- <span>
             What We Do
-          </span>
+          </span> -->
 
           <h2>
             Our services:
@@ -1406,8 +1437,7 @@
             </h3>
 
             <p>
-              Professional cleaning services to keep your
-              workplace welcoming.
+              Professional cleaning services. We take care of your space. 
             </p>
 
           </div>
@@ -1448,9 +1478,9 @@
 
             <span class="section-heading">
 
-              <span>
+              <!-- <span>
                 Why Choose Us
-              </span>
+              </span> -->
 
             </span>
 
@@ -1519,9 +1549,9 @@
 
         <div class="section-heading center">
 
-          <span>
+          <!-- <span>
             Gallery
-          </span>
+          </span> -->
 
           <h2>
              Our Work
@@ -1738,9 +1768,9 @@
 
         <div class="section-heading center">
 
-          <span>
+          <!-- <span>
             Follow Along
-          </span>
+          </span> -->
 
           <h2>
             Follow us on social media
@@ -2119,7 +2149,7 @@
         >
 
           <img
-            src="../images/logo.png"
+            src="../images/property_works_llc_logo.png"
             alt="pwLL Logo"
           />
 
@@ -2141,7 +2171,7 @@
         </div>
 
         <div>
-          email@email.com
+          info@propertyworksservices.com
         </div>
 
         <div>
